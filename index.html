@@ -2,121 +2,341 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Websites Made Fast</title>
+  <title>Websites Made Fast — Clean, Modern Web Design</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Clean, modern websites for businesses and creators. Fast turnaround, no hassle. Get a professional site from £45." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%230f0f0f' width='32' height='32' rx='6'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%23fff' font-family='system-ui'>W</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+  :root {
+    --color-bg: #fafafa;
+    --color-surface: #fff;
+    --color-border: #e5e5e5;
+    --color-border-hover: #d4d4d4;
+    --color-text: #1a1a1a;
+    --color-muted: #737373;
+    --color-muted-light: #a3a3a3;
+    --color-dark: #0f0f0f;
+    --color-dark-hover: #262626;
+    --space-section: 80px;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: Inter, sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    background: #f9fafb;
-    color: #111827;
+    background: var(--color-bg);
+    color: var(--color-text);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 24px;
+    padding: 12px 20px;
+    background: var(--color-dark);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--radius);
+    z-index: 100;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 24px;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .nav .btn {
+    margin-top: 0;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background: var(--color-dark);
+    color: #fff;
+  }
+  .nav .btn:hover {
+    background: var(--color-dark-hover);
+  }
+  .nav .btn:focus-visible {
+    outline-color: var(--color-dark);
   }
 
   header {
     text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: white;
+    padding: 100px 24px 120px;
+    background: var(--color-dark);
+    color: #fff;
   }
 
   header h1 {
-    font-size: 3.2rem;
-    margin-bottom: 15px;
-    animation: fadeUp 0.8s ease forwards;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+    animation: fadeUp 0.6s ease forwards;
   }
 
   header p {
-    font-size: 1.2rem;
-    opacity: 0.95;
-    animation: fadeUp 1s ease forwards;
+    font-size: 1.1rem;
+    color: var(--color-muted-light);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.1s ease forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
   }
 
   .btn {
     display: inline-block;
-    margin-top: 35px;
-    padding: 16px 32px;
-    background: white;
-    color: #1e40af;
-    border-radius: 999px;
+    margin-top: 32px;
+    padding: 14px 28px;
+    background: #fff;
+    color: var(--color-dark);
+    border-radius: var(--radius);
     text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
   .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  main {
+    outline: none;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 8px;
   }
 
   .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--space-section) 24px;
+  }
+
+  .container + .container {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .section-heading {
+    margin: 0 0 48px;
+    text-align: center;
   }
 
   h2 {
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text);
+    letter-spacing: -0.01em;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
   }
 
   .card {
-    background: white;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: var(--color-surface);
+    padding: 32px 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
   }
 
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
 
-  form input, form textarea {
-    width: 100%;
+  .card-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+    color: var(--color-text);
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .card.price .card-title { margin-bottom: 4px; }
+  .card.price .card-desc { font-size: 0.85rem; }
+
+  .form-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .form-feedback {
+    display: none;
     padding: 16px;
+    border-radius: var(--radius);
     margin-bottom: 16px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
+    text-align: center;
+    font-weight: 500;
+  }
+  .form-feedback.success {
+    display: block;
+    background: #dcfce7;
+    color: #166534;
+  }
+  .form-feedback.error {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  .form-feedback.loading {
+    display: block;
+    background: #f3f4f6;
+    color: var(--color-muted);
+  }
+
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
     font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+  }
+
+  form input:focus,
+  form textarea:focus {
+    outline: none;
+    border-color: var(--color-muted);
+  }
+
+  form input::placeholder,
+  form textarea::placeholder {
+    color: var(--color-muted-light);
+  }
+
+  form textarea {
+    resize: vertical;
+    min-height: 120px;
   }
 
   form button {
     width: 100%;
-    padding: 16px;
-    background: #2563eb;
-    color: white;
+    padding: 14px;
+    background: var(--color-dark);
+    color: #fff;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--radius);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: inherit;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, opacity 0.2s ease;
   }
 
   form button:hover {
-    background: #1e40af;
+    background: var(--color-dark-hover);
+  }
+
+  form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  form button:focus-visible {
+    outline: 2px solid var(--color-dark);
+    outline-offset: 2px;
   }
 
   footer {
     text-align: center;
-    padding: 50px;
-    color: #6b7280;
+    padding: 40px 24px;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--color-border);
   }
 
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
@@ -126,6 +346,12 @@
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="nav">
+  <a href="#" class="nav-brand">Websites Made Fast</a>
+  <a class="btn" href="#contact">Get a website</a>
+</nav>
 
 <header>
   <h1>Websites, made fast.</h1>
@@ -133,49 +359,150 @@
   <a class="btn" href="#contact">Get a website</a>
 </header>
 
+<main id="main" tabindex="-1">
 <section class="container">
-  <h2>What I offer</h2>
+  <div class="section-heading">
+    <span class="section-label">Services</span>
+    <h2>What I offer</h2>
+  </div>
   <div class="grid">
-    <div class="card">Business websites</div>
-    <div class="card">Landing pages</div>
-    <div class="card">Portfolio sites</div>
-    <div class="card">Redesigns & fixes</div>
+    <div class="card">
+      <h3 class="card-title">Business websites</h3>
+      <p class="card-desc">Professional sites for companies ready to grow online</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">Landing pages</h3>
+      <p class="card-desc">High-converting pages for campaigns and products</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">Portfolio sites</h3>
+      <p class="card-desc">Showcase your work in a clean, focused layout</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">Redesigns & fixes</h3>
+      <p class="card-desc">Update existing sites or resolve technical issues</p>
+    </div>
   </div>
 </section>
 
 <section class="container">
-  <h2>How it works</h2>
+  <div class="section-heading">
+    <span class="section-label">Process</span>
+    <h2>How it works</h2>
+  </div>
   <div class="grid">
-    <div class="card">1. You tell me what you need</div>
-    <div class="card">2. I design & build your site</div>
-    <div class="card">3. Your website goes live</div>
+    <div class="card">
+      <span class="card-number" aria-hidden="true">1</span>
+      <h3 class="card-title">Tell me what you need</h3>
+      <p class="card-desc">Share your goals and preferences in a quick chat</p>
+    </div>
+    <div class="card">
+      <span class="card-number" aria-hidden="true">2</span>
+      <h3 class="card-title">I design & build</h3>
+      <p class="card-desc">You get a clean, modern site tailored to your brand</p>
+    </div>
+    <div class="card">
+      <span class="card-number" aria-hidden="true">3</span>
+      <h3 class="card-title">Your site goes live</h3>
+      <p class="card-desc">Launch quickly with no ongoing hassle</p>
+    </div>
   </div>
 </section>
 
 <section class="container">
-  <h2>Pricing</h2>
+  <div class="section-heading">
+    <span class="section-label">Pricing</span>
+    <h2>Simple pricing</h2>
+  </div>
   <div class="grid">
-    <div class="card">Starter site — £45</div>
-    <div class="card">Business site — £99</div>
-    <div class="card">Custom — contact me</div>
+    <div class="card price">
+      <h3 class="card-title">Starter site — £45</h3>
+      <p class="card-desc">Single-page site, ideal for small projects</p>
+    </div>
+    <div class="card price">
+      <h3 class="card-title">Business site — £99</h3>
+      <p class="card-desc">Multi-page site with contact and services</p>
+    </div>
+    <div class="card price">
+      <h3 class="card-title">Custom</h3>
+      <p class="card-desc">Larger or unique projects — get a quote</p>
+    </div>
   </div>
 </section>
 
 <section class="container" id="contact">
-  <h2>Get started</h2>
-
-  <!-- FREE contact form -->
- /f/xzdapqjv
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="What kind of website do you need?" rows="5" required></textarea>
-    <button type="submit">Send request</button>
-  </form>
+  <div class="section-heading">
+    <span class="section-label">Contact</span>
+    <h2>Get started</h2>
+  </div>
+  <div class="form-wrap">
+    <div id="form-feedback" class="form-feedback" role="status" aria-live="polite"></div>
+    <form id="contact-form" action="https://formspree.io/f/xzdapqjv" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="What kind of website do you need?" rows="5" required></textarea>
+      <button type="submit" id="form-submit">Send request</button>
+    </form>
+  </div>
 </section>
+</main>
 
 <footer>
-  © 2026 — Websites Made Fast
+  © 2026 Websites Made Fast
 </footer>
 
+<script>
+(function() {
+  var form = document.getElementById('contact-form');
+  var feedback = document.getElementById('form-feedback');
+  var submitBtn = document.getElementById('form-submit');
+
+  if (!form) return;
+
+  function showFeedback(message, type) {
+    feedback.textContent = message;
+    feedback.className = 'form-feedback ' + type;
+    feedback.style.display = 'block';
+  }
+
+  function hideFeedback() {
+    feedback.textContent = '';
+    feedback.className = 'form-feedback';
+    feedback.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideFeedback();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    showFeedback('Sending your request…', 'loading');
+
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        showFeedback('Thanks! I\'ll be in touch soon.', 'success');
+        form.reset();
+      } else {
+        showFeedback('Something went wrong. Please try again or email me directly.', 'error');
+      }
+    })
+    .catch(function() {
+      showFeedback('Something went wrong. Please try again or email me directly.', 'error');
+    })
+    .finally(function() {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send request';
+    });
+  });
+})();
+</script>
 </body>
 </html>
